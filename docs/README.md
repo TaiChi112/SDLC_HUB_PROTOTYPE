@@ -26,6 +26,14 @@ Welcome to the Blueprint Hub documentation! This folder contains guides, archite
 - **[TypeScript_conventions.md](TypeScript_conventions.md)** - Frontend code style guide
 - **[Python_conventions.md](Python_conventions.md)** - Backend code style guide
 
+### Visual Documentation
+- **[📊 diagrams/](diagrams/)** - System diagrams & visual documentation
+  - [Architecture Diagrams](diagrams/architecture.md) - System components & tech stack
+  - [Data Flow Diagrams](diagrams/data-flow.md) - Sequences & operations
+  - [User Journey Maps](diagrams/user-journey.md) - User experience flows
+  - [MCP Integration](diagrams/mcp-integration.md) - Future architecture plans
+  - [Deployment Diagrams](diagrams/deployment.md) - Infrastructure & DevOps
+
 ## 📝 Session Notes & Decisions
 
 All strategic conversations and important decisions are preserved in **[session-notes/](session-notes/)**
@@ -40,23 +48,33 @@ All strategic conversations and important decisions are preserved in **[session-
 - Start with [README.md](../README.md)
 - Follow quick start section
 - Check [FEATURE_ROADMAP.md](FEATURE_ROADMAP.md) for what's coming
+- View [User Journey](diagrams/user-journey.md) to understand workflows
 
 ### **For Frontend Developers**
 - Read [MONOREPO_STRUCTURE.md](MONOREPO_STRUCTURE.md)
 - Check [TypeScript_conventions.md](TypeScript_conventions.md)
 - Review [API_CONTRACTS.md](API_CONTRACTS.md) for backend integration
+- View [Architecture Diagrams](diagrams/architecture.md) & [Data Flow](diagrams/data-flow.md)
 - Setup: See [README.md](../README.md) → Frontend Setup
 
 ### **For Backend Developers**
 - Read [MONOREPO_STRUCTURE.md](MONOREPO_STRUCTURE.md)
 - Check [Python_conventions.md](Python_conventions.md)
 - Review [API_CONTRACTS.md](API_CONTRACTS.md) for frontend integration
+- View [Architecture Diagrams](diagrams/architecture.md) & [Data Flow](diagrams/data-flow.md)
 - Setup: See [BACKEND_SETUP.md](BACKEND_SETUP.md)
 
 ### **For DevOps / Deployment**
 - See [DATABASE_SETUP.md](DATABASE_SETUP.md)
 - See [BACKEND_SETUP.md](BACKEND_SETUP.md) for containerization
+- View [Deployment Diagrams](diagrams/deployment.md) for infrastructure
 - Check GitHub workflows in [.github/workflows/](.github/workflows/)
+
+### **For Architects / Technical Leads**
+- Review [Architecture Diagrams](diagrams/architecture.md)
+- Study [MCP Integration Plans](diagrams/mcp-integration.md)
+- Read [DEVELOPMENT_PLANS.md](DEVELOPMENT_PLANS.md)
+- Check [session-notes/](session-notes/) for strategic decisions
 
 ### **For Contributors**
 - Read [../CONTRIBUTING.md](../CONTRIBUTING.md)

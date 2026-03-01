@@ -100,6 +100,18 @@ cd frontend && bun run dev
 | [CONTRIBUTING.md](CONTRIBUTING.md) | How to contribute |
 | [SECURITY.md](SECURITY.md) | Security & deployment checklist |
 
+### 📊 Visual Documentation
+
+Complete system diagrams in [docs/diagrams/](docs/diagrams/):
+
+| Diagram | Purpose |
+|---------|---------|
+| [Architecture](docs/diagrams/architecture.md) | System components & tech stack |
+| [Data Flow](docs/diagrams/data-flow.md) | Sequences, operations & API flows |
+| [User Journey](docs/diagrams/user-journey.md) | User experience across personas |
+| [MCP Integration](docs/diagrams/mcp-integration.md) | Future architecture & roadmap |
+| [Deployment](docs/diagrams/deployment.md) | Infrastructure & DevOps |
+
 ---
 
 ## ✨ Key Features

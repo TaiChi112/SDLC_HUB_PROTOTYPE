@@ -44,6 +44,7 @@ Examples:
 | 2026-03-01 | Strategic Planning & MCP Integration | Agent | [2026-03-01-strategic-planning.md](2026-03-01-strategic-planning.md) |
 | 2026-03-01 | Session Notes System & Data Storage | Agent | [2026-03-01-session-notes-system.md](2026-03-01-session-notes-system.md) |
 | 2026-03-01 | Completion Handshake + Auto-Save Policy | Agent | [2026-03-01-completion-handshake-auto-save-policy.md](2026-03-01-completion-handshake-auto-save-policy.md) |
+| 2026-03-02 | MCP Integration Analysis & Roadmap | Planning | [2026-03-02-mcp-integration-analysis.md](2026-03-02-mcp-integration-analysis.md) |
 
 ---
 
