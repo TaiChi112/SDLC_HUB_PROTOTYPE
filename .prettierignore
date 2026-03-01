@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+backend/.venv/
+backend/venv/
+
+# Production
+dist/
+build/
+.next/
+
+# Misc
+.git/
+*.lock
+uv.lock
+bun.lock
+
+# Logs
+*.log
+tmp/
+
+# Prisma
+prisma/migrations/

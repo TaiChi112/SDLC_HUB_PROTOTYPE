@@ -1,36 +1,256 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Blueprint Hub - AI-Powered Requirements & Architecture Management
 
-## Getting Started
+อังคต system สำหรับจัดการ **Software Requirements** และ **Architecture Artifacts** ด้วย AI  
+**Production-ready monorepo**: Next.js + FastAPI + TypeScript + Python + PostgreSQL
 
-First, run the development server:
+- 🎯 Centralized platform for design specifications and requirement engineering
+- 👥 For software architects, product teams, and development teams  
+- 🚀 Status: Prototype V1 (Active Development)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 📦 Monorepo Structure
+
+```
+special_project_v1/
+├── .github/                 # Templates, workflows, configs
+│   ├── ISSUE_TEMPLATE/      # Bug/Feature report templates
+│   ├── workflows/           # CI/CD pipelines
+│   └── copilot-instructions.md
+├── frontend/                # Next.js 16 + React 19 + TypeScript
+├── backend/                 # Python FastAPI + LLM integration
+├── docs/                    # Complete documentation
+│   ├── README.md           # 📖 Documentation index
+│   ├── MONOREPO_STRUCTURE.md
+│   ├── FEATURE_ROADMAP.md
+│   ├── API_CONTRACTS.md
+│   ├── DATABASE_SETUP.md
+│   ├── TypeScript_conventions.md
+│   ├── Python_conventions.md
+│   └── session-notes/      # Archived discussions
+├── CONTRIBUTING.md          # How to contribute
+├── CODE_OF_CONDUCT.md       # Community guidelines
+├── SECURITY.md              # Security policy
+└── TODO.md                  # Project backlog
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ⚡ Quick Start
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites
 
-## Learn More
+- **Bun** - [Install](https://bun.sh) | `bun --version`
+- **uv** - [Install](https://docs.astral.sh/uv/) | `uv --version`  
+- **PostgreSQL 14+** - [Install](https://www.postgresql.org/download/) | `psql --version`
 
-To learn more about Next.js, take a look at the following resources:
+### 1️⃣ Clone & Install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+git clone https://github.com/your-org/special_project_v1.git
+cd special_project_v1
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+cd frontend && bun install && cd ..
+cd backend && uv sync && cd ..
+```
 
-## Deploy on Vercel
+### 2️⃣ Database Setup
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+# Create PostgreSQL database
+createdb blueprint_hub_dev
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Configure & migrate
+cd frontend
+cp .env.local.example .env.local
+# Edit .env.local: DATABASE_URL="postgresql://user:pass@localhost:5432/blueprint_hub_dev"
+bunx prisma migrate deploy
+```
+
+### 3️⃣ Run Locally
+
+**Backend** (Terminal 1):
+```bash
+cd backend && cp .env.example .env.local && uv run python app.py
+# http://localhost:8000
+```
+
+**Frontend** (Terminal 2):
+```bash
+cd frontend && bun run dev
+# http://localhost:3000
+```
+
+---
+
+## 📚 Documentation
+
+**👉 [START HERE: docs/README.md](docs/README.md)** - Complete documentation index
+
+| Document | Purpose |
+|----------|---------|
+| [docs/MONOREPO_STRUCTURE.md](docs/MONOREPO_STRUCTURE.md) | Architecture & folder layout |
+| [docs/FEATURE_ROADMAP.md](docs/FEATURE_ROADMAP.md) | Features & milestones |
+| [docs/DEVELOPMENT_PLANS.md](docs/DEVELOPMENT_PLANS.md) | Strategic plans & technical details |
+| [docs/API_CONTRACTS.md](docs/API_CONTRACTS.md) | Frontend-Backend API specification |
+| [docs/DATABASE_SETUP.md](docs/DATABASE_SETUP.md) | PostgreSQL & Prisma guide |
+| [docs/BACKEND_SETUP.md](docs/BACKEND_SETUP.md) | Python FastAPI setup |
+| [docs/TypeScript_conventions.md](docs/TypeScript_conventions.md) | Frontend code style |
+| [docs/Python_conventions.md](docs/Python_conventions.md) | Backend code style |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | How to contribute |
+| [SECURITY.md](SECURITY.md) | Security & deployment checklist |
+
+---
+
+## ✨ Key Features
+
+- **Granular Data Structure**: 9 standard requirement sections
+- **Rich Artifacts**: Text, lists, Mermaid.js diagrams
+- **Version Tracking**: V0.1 → V1.0 → V2.0
+- **Contribution Workflow**: Suggestion mode for collaborative editing
+- **Interactive UI**: Accordion sections, heatmap visualization
+- **NextAuth Integration**: Google & GitHub OAuth
+- **Type-Safe**: TypeScript strict mode + Python type hints
+- **CI/CD Ready**: GitHub Actions workflows for frontend & backend
+- **Production Grade**: Rate limiting, validation, error handling
+
+---
+
+## 🛠️ Development
+
+### Code Style
+
+**Frontend**: [TypeScript conventions](docs/TypeScript_conventions.md)  
+- Functional components, PascalCase, hooks
+- ESLint + Prettier
+
+**Backend**: [Python conventions](docs/Python_conventions.md)  
+- PEP 8, type hints, snake_case
+- Ruff linter
+
+### Commands
+
+```bash
+# Frontend
+cd frontend
+bun run dev          # Dev server
+bun run lint         # Check code
+bun run build        # Production build
+bunx prisma studio  # Database UI
+
+# Backend
+cd backend
+uv run python app.py           # Dev server
+uv run ruff check .            # Lint
+uv run pytest                  # Tests
+```
+
+### GitHub Workflows
+
+Automatic CI/CD on push/PR:
+- **Frontend**: Linting → TypeScript → Build
+- **Backend**: Linting → Type check → Tests
+
+---
+
+## 🤝 Contributing
+
+1. Read [CONTRIBUTING.md](CONTRIBUTING.md) & [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+2. Fork & create branch: `git checkout -b feature/amazing-feature`
+3. Follow code conventions
+4. Run: `lint` & `build`
+5. Use [PR template](.github/PULL_REQUEST_TEMPLATE.md)
+
+**Templates:**
+- [Bug Report](https://github.com/special_project_v1/issues/new?template=bug_report.md)
+- [Feature Request](https://github.com/special_project_v1/issues/new?template=feature_request.md)
+
+---
+
+## 🔒 Security
+
+**Found a vulnerability?** Email: `security@example.com` (do NOT open public issues)
+
+Production checklist in [SECURITY.md](SECURITY.md):
+- ✅ Database backups
+- ✅ Rate limiting
+- ✅ HTTPS/TLS
+- ✅ CORS configured
+- ✅ Input validation
+- ✅ Secrets in env vars
+
+---
+
+## 📊 Tech Stack
+
+| Layer | Tech | Package Mgr |
+|-------|------|-------------|
+| **Frontend** | Next.js 16 + React 19 + TypeScript + Tailwind | Bun |
+| **Database** | PostgreSQL + Prisma ORM | Bun |
+| **Auth** | NextAuth.js (OAuth) | Bun |
+| **Backend API** | Python 3.11 + FastAPI | uv |
+| **Diagrams** | Mermaid.js | CDN |
+
+---
+
+## 📊 Project Status
+
+| Phase | Status | Timeline |
+|-------|--------|----------|
+| MVP Features | ✅ | Mar 2026 |
+| Monorepo Architecture | ✅ | Mar 2026 |
+| Documentation | ✅ | Mar 2026 |
+| Multi-turn LLM | 🔄 | Q2 2026 |
+| Traceability Matrix | 📋 | Q3 2026 |
+| Visual Design Mode | 📋 | Q3 2026 |
+
+---
+
+## 🆘 Troubleshooting
+
+**Frontend won't start?**
+- `rm -rf frontend/node_modules && cd frontend && bun install`
+- Check `.env.local` has all OAuth credentials
+- Ensure PostgreSQL running: `pg_isready`
+
+**Backend API not responding?**
+- Check: `curl http://localhost:8000/docs`
+- `rm -rf backend/.venv && cd backend && uv sync`
+- Verify `DATABASE_URL` in `.env.local`
+
+**OAuth not working?**
+- Verify GitHub/Google callback URLs: `http://localhost:3000/api/auth/callback/{provider}`
+- Ensure `NEXTAUTH_SECRET` is set
+
+**Database issues?**
+- Test connection: `psql $DATABASE_URL -c "SELECT 1"`
+- Frontend: `bunx prisma db push`
+- Check logs: `tail -f backend/.logs`
+
+---
+
+## 📖 Resources
+
+- [Next.js](https://nextjs.org/) | [Prisma](https://www.prisma.io/) | [Auth.js](https://authjs.dev/)
+- [FastAPI](https://fastapi.tiangolo.com/) | [uv](https://docs.astral.sh/uv/) | [Mermaid](https://mermaid.js.org/)
+
+---
+
+## 📄 License
+
+TBD
+
+---
+
+## 📞 Support
+
+| Type | Where |
+|------|-------|
+| 🐛 Bug | [GitHub Issues](https://github.com/special_project_v1/issues/new?template=bug_report.md) |
+| ✨ Feature | [GitHub Issues](https://github.com/special_project_v1/issues/new?template=feature_request.md) |
+| 💬 Question | GitHub Discussions |
+| 🔐 Security | security@example.com |
+
+---
+
+**Last Updated**: March 2026 | **Version**: 0.1.0 (MVP) | **Maintained By**: Development Team

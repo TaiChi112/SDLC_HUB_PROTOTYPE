@@ -1,24 +1,26 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+### FRONTEND (Next.js + TypeScript) ###
+
 # dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+frontend/node_modules/
+frontend/.pnp
+frontend/.pnp.*
+frontend/.yarn/*
+!frontend/.yarn/patches
+!frontend/.yarn/plugins
+!frontend/.yarn/releases
+!frontend/.yarn/versions
 
 # testing
-/coverage
+frontend/coverage/
 
 # next.js
-/.next/
-/out/
+frontend/.next/
+frontend/out/
 
 # production
-/build
+frontend/build/
 
 # misc
 .DS_Store
@@ -29,13 +31,163 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+bun-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# env files (NEVER commit .env.local - use .env.example instead)
+frontend/.env*.local
+frontend/.env.local
+backend/.env*.local
+backend/.env.local
+.env*.local
+.env.local
+
+# Do commit .env.example templates
+!**/.env.example
+
+# prisma
+frontend/*.db
+frontend/*.db-journal
 
 # vercel
-.vercel
+frontend/.vercel/
 
 # typescript
-*.tsbuildinfo
-next-env.d.ts
+frontend/*.tsbuildinfo
+frontend/next-env.d.ts
+
+### BACKEND (Python + FastAPI) ###
+
+# Python virtual environments
+backend/.venv/
+backend/venv/
+backend/env/
+backend/ENV/
+
+# Python bytecode
+backend/__pycache__/
+backend/**/__pycache__/
+backend/*.py[cod]
+backend/*$py.class
+
+# Python distribution / packaging
+backend/*.so
+backend/.Python
+backend/build/
+backend/develop-eggs/
+backend/dist/
+backend/downloads/
+backend/eggs/
+backend/.eggs/
+backend/lib/
+backend/lib64/
+backend/parts/
+backend/sdist/
+backend/var/
+backend/wheels/
+backend/share/python-wheels/
+backend/*.egg-info/
+backend/.installed.cfg
+backend/*.egg
+backend/MANIFEST
+
+# PyInstaller
+backend/*.manifest
+backend/*.spec
+
+# Unit test / coverage
+backend/.tox/
+backend/.nox/
+backend/.coverage
+backend/.coverage.*
+backend/.cache
+backend/nosetests.xml
+backend/coverage.xml
+backend/*.cover
+backend/*.py,cover
+backend/.hypothesis/
+backend/.pytest_cache/
+backend/cover/
+
+# Jupyter Notebook
+backend/.ipynb_checkpoints
+
+# IPython
+backend/profile_default/
+backend/ipython_config.py
+
+# pyenv
+backend/.python-version
+
+# pipenv
+backend/Pipfile.lock
+
+# PEP 582
+backend/__pypackages__/
+
+# Celery
+backend/celerybeat-schedule
+backend/celerybeat.pid
+
+# SageMath
+backend/*.sage.py
+
+# Environments
+backend/.env
+backend/.venv
+backend/env/
+backend/venv/
+backend/ENV/
+backend/env.bak/
+backend/venv.bak/
+
+# Spyder
+backend/.spyderproject
+backend/.spyproject
+
+# Rope
+backend/.ropeproject
+
+# mkdocs
+backend/site/
+
+# mypy
+backend/.mypy_cache/
+backend/.dmypy.json
+backend/dmypy.json
+
+# Pyre
+backend/.pyre/
+
+# pytype
+backend/.pytype/
+
+# Cython
+backend/cython_debug/
+
+### ROOT (Monorepo) ###
+
+# Don't commit node_modules or .next at root
+/node_modules/
+/.next/
+
+# IDE settings
+.vscode/settings.json
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Error dumps
+error.txt
+nul
+
+# Migration artifact (can be committed later)
+MIGRATION_COMPLETE.md
