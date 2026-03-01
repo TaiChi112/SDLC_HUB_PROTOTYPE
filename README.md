@@ -108,6 +108,14 @@ cd frontend && bun run dev
 - ROI analysis
 - **Perfect for**: Leadership, team planning
 
+### For Technical Leadership
+📋 **[SDLC Documentation Guide](SDLC.md)** (Complete process overview)
+- All standard SDLC documents mapped (Planning → Maintenance)
+- PRD, BRD, SRS, SAD, SSOT principles explained
+- Blueprint Hub project references & status
+- MVP-level guidance for software product development
+- **Perfect for**: Tech leads, architects, product managers
+
 ### Visual System Overview
 📐 **[Complete Diagram Library](docs/diagrams/)** (30+ diagrams)
 - [Architecture](docs/diagrams/architecture.md) - System components (5 min read)
@@ -134,6 +142,7 @@ cd frontend && bun run dev
 | [docs/BACKEND_SETUP.md](docs/BACKEND_SETUP.md) | Python FastAPI setup |
 | [docs/TypeScript_conventions.md](docs/TypeScript_conventions.md) | Frontend code style |
 | [docs/Python_conventions.md](docs/Python_conventions.md) | Backend code style |
+| [SDLC.md](SDLC.md) | Complete SDLC documentation guide (PRD, BRD, SRS, SAD, SSOT) |
 | [docs/TESTING_STRATEGY.md](docs/TESTING_STRATEGY.md) | Testing plan & quality assurance strategy (SDLC Standard) |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | How to contribute |
 | [SECURITY.md](SECURITY.md) | Security & deployment checklist |
