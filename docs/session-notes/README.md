@@ -41,6 +41,12 @@ Examples:
 
 | Date | Topic | Type | File |
 |------|-------|------|------|
+| 2026-03-03 | Component Testing & Coverage Completion | Agent | [2026-03-03-component-testing-coverage-completion.md](2026-03-03-component-testing-coverage-completion.md) |
+| 2026-03-03 | E2E WebServer Fix + Backend Folder Restructure | Agent | [2026-03-03-e2e-webserver-backend-restructure.md](2026-03-03-e2e-webserver-backend-restructure.md) |
+| 2026-03-03 | Testing Infrastructure Implementation (pytest/Vitest/Playwright) | Agent | [2026-03-03-testing-infrastructure-completion.md](2026-03-03-testing-infrastructure-completion.md) |
+| 2026-03-03 | Phase 4 Completion with API/E2E Testing | Agent | [2026-03-03-phase4-completion-testing.md](2026-03-03-phase4-completion-testing.md) |
+| 2026-03-03 | Phase 4.4 Backup Verification + Phase 4.5 Viewer Integration | Agent | [2026-03-03-phase4-backup-verification-viewer.md](2026-03-03-phase4-backup-verification-viewer.md) |
+| 2026-03-03 | Phase 4 Excalidraw Implementation (UI + MCP Clarification) | Agent | [2026-03-03-phase4-excalidraw-implementation.md](2026-03-03-phase4-excalidraw-implementation.md) |
 | 2026-03-01 | Strategic Planning & MCP Integration | Agent | [2026-03-01-strategic-planning.md](2026-03-01-strategic-planning.md) |
 | 2026-03-01 | Session Notes System & Data Storage | Agent | [2026-03-01-session-notes-system.md](2026-03-01-session-notes-system.md) |
 | 2026-03-01 | Completion Handshake + Auto-Save Policy | Agent | [2026-03-01-completion-handshake-auto-save-policy.md](2026-03-01-completion-handshake-auto-save-policy.md) |
@@ -48,6 +54,11 @@ Examples:
 | 2026-03-02 | Stakeholder Benefits Analysis | Analysis | [2026-03-02-stakeholder-benefits-analysis.md](2026-03-02-stakeholder-benefits-analysis.md) |
 | 2026-03-02 | Developer Experience & MCP Project Board | Implementation | [2026-03-02-developer-experience-mcp-board.md](2026-03-02-developer-experience-mcp-board.md) |
 | 2026-03-02 | SDLC Documentation Completion & Team Rollout Planning | Implementation | [2026-03-02-sdlc-documentation-completion.md](2026-03-02-sdlc-documentation-completion.md) |
+| 2026-03-02 | Phase 2–3: Diagram Generation Feature | Implementation | [2026-03-02-phase2-phase3-diagram-feature.md](2026-03-02-phase2-phase3-diagram-feature.md) |
+| 2026-03-03 | Phase 4: Excalidraw Visualization Architecture | Architecture | [2026-03-03-excalidraw-visualization-architecture.md](2026-03-03-excalidraw-visualization-architecture.md) |
+| 2026-03-02 | Frontend-Backend Sync & Prisma Schema Alignment | Implementation | [2026-03-02-frontend-backend-sync.md](2026-03-02-frontend-backend-sync.md) |
+| 2026-03-02 | JSON Migration to PostgreSQL with Ownership Transfer and Frontend Logic Fix | Agent | [2026-03-02-json-migration-ownership-frontend-fix.md](2026-03-02-json-migration-ownership-frontend-fix.md) |
+| 2026-03-02 | Excalidraw Visualization Architecture Planning | Planning | [2026-03-02-excalidraw-visualization-planning.md](2026-03-02-excalidraw-visualization-planning.md) |
 
 ---
 
@@ -72,4 +83,4 @@ Use [_TEMPLATE.md](./_TEMPLATE.md) as the base template.
 
 ---
 
-**Last Updated**: March 2, 2026
+**Last Updated**: March 3, 2026
