@@ -635,6 +635,10 @@ Postcondition: Blueprint is generated and ready to save
 ### 9.5 Testing Phase (✅ Core Complete)
 - [x] Test Strategy (docs/TESTING_STRATEGY.md) ✅
 - [x] Test Plan (docs/TEST_PLAN_Q2_2026.md) - MCP Integration ✅
+- [x] API Route Coverage (backend/tests/test_api_routes.py) ✅
+- [x] E2E Browser Test (Playwright: frontend/tests/e2e/generator-test.spec.ts) ✅
+- [x] Unit Test (Vitest: frontend/utils/diagramHelpers.test.ts) ✅
+- [x] Quota Fallback Validation (Gemini quota limit → mock data) ✅
 - [ ] Test Cases (Repository - Due Mar 24, 2026)
 - [ ] Test Reports (Weekly - Apr-Jun 2026)
 
@@ -701,6 +705,9 @@ Postcondition: Blueprint is generated and ready to save
 - NextAuth.js (Authentication)
 - FastAPI (Backend framework)
 - OpenAI API (LLM integration)
+- Pytest + FastAPI TestClient (Backend API route testing)
+- Playwright (E2E browser testing)
+- Vitest (Frontend unit testing)
 
 ---
 
