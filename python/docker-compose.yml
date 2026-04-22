@@ -1,0 +1,147 @@
+services:
+  # PostgreSQL Database (optional, for production use)
+  postgres:
+    image: postgres:15-alpine
+    container_name: calendar-agent-db
+    environment:
+      POSTGRES_DB: calendar_agent
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - calendar-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    profiles:
+      - with-db
+
+  # MCP Calendar Server (Node.js)
+  mcp-server:
+    image: node:18-alpine
+    container_name: calendar-agent-mcp
+    working_dir: /app/mcp-server
+    volumes:
+      - ./:/app
+      - ./credentials.json:/app/credentials.json:ro
+      - ./token.json:/app/token.json
+    environment:
+      CREDENTIALS_PATH: /app/credentials.json
+      TOKEN_PATH: /app/token.json
+    ports:
+      - "3000:3000"
+    networks:
+      - calendar-network
+    command: sh -c "npm install && npm start"
+    depends_on:
+      - python-app
+    profiles:
+      - with-mcp
+
+  # Flask Web UI + Calendar Agent
+  python-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: calendar-agent-app
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - ./data:/app/data
+      - ./diagrams:/app/diagrams
+      - ./logs:/app/logs
+      - ./credentials.json:/app/credentials.json:ro
+      - ./token.json:/app/token.json
+    environment:
+      PYTHONUNBUFFERED: "1"
+      FLASK_ENV: ${FLASK_ENV:-production}
+      CALENDAR_MODE: ${CALENDAR_MODE:-mock}
+      CREDENTIALS_PATH: /app/credentials.json
+      TOKEN_PATH: /app/token.json
+      PORT: 5000
+      SECRET_KEY: ${SECRET_KEY:-dev-secret-key-change-in-production}
+      DATABASE_URL: ${DATABASE_URL:-sqlite:///calendar_agent.db}
+    ports:
+      - "5000:5000"
+      - "8000:8000"
+    networks:
+      - calendar-network
+    command: python app.py
+    depends_on:
+      - postgres
+    profiles:
+      - default
+      - with-db
+      - with-mcp
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+
+  # Optional: pgAdmin for database management
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: calendar-agent-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@example.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin}
+    ports:
+      - "5050:80"
+    networks:
+      - calendar-network
+    depends_on:
+      - postgres
+    profiles:
+      - with-db
+
+  # Optional: Nginx reverse proxy for production
+  nginx:
+    image: nginx:alpine
+    container_name: calendar-agent-nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - calendar-network
+    depends_on:
+      - python-app
+    profiles:
+      - production
+
+networks:
+  calendar-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local
+
+# Profiles:
+# - default: Runs only python-app (Flask Web UI)
+# - with-db: Runs python-app + PostgreSQL + pgAdmin
+# - with-mcp: Runs python-app + MCP server + PostgreSQL
+# - production: Runs all services with Nginx reverse proxy
+#
+# Usage:
+#   docker-compose up                                      # default profile
+#   docker-compose --profile with-db up                   # with PostgreSQL
+#   docker-compose --profile with-mcp up                  # with MCP server
+#   docker-compose --profile production up                # full stack
+#
+# Environment variables in .env file:
+#   CALENDAR_MODE=mock|api|mcp
+#   FLASK_ENV=development|production
+#   DB_USER=postgres
+#   DB_PASSWORD=your_password
+#   SECRET_KEY=your_secret_key
+#   PGADMIN_EMAIL=admin@example.com
+#   PGADMIN_PASSWORD=admin
