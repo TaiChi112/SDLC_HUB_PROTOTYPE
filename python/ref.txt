@@ -1,0 +1,75 @@
+☁️ ขั้นตอนการตั้งค่า Google Cloud สำหรับ AI Calendar Agent
+
+เอกสารนี้รวบรวมขั้นตอนการขอสิทธิ์เข้าถึง Google Calendar API เพื่อนำไปใช้กับ Model Context Protocol (MCP) หรือ Python Agent
+
+📖 Terminology (ทำไมต้องทำสิ่งเหล่านี้?)
+
+Google Cloud Project: เปรียบเสมือน "แฟ้มเอกสาร" ที่รวมการตั้งค่า สิทธิ์ และโควต้าการใช้งาน API สำหรับโปรเจกต์นี้
+
+Enable API: Google ปิด API ไว้เป็นค่าเริ่มต้นเพื่อความปลอดภัย เราต้องไปเปิดสวิตช์บอกว่า "โปรเจกต์นี้ขอใช้ Calendar นะ"
+
+OAuth Consent Screen: หน้าจอที่เด้งขึ้นมาถามผู้ใช้ว่า "แอปนี้ขอเข้าถึงปฏิทินของคุณ คุณยอมรับไหม?"
+
+OAuth 2.0 Credentials: กุญแจ (Client ID และ Client Secret) ที่แอปพลิเคชัน (Agent) ใช้ยืนยันตัวตนกับ Google ว่า "ฉันคือแอปที่ได้รับอนุญาตนะ" โดยไม่ต้องรู้รหัสผ่าน Gmail ของคุณ
+
+🛠️ Step-by-Step Guide
+
+Step 1: สร้าง Google Cloud Project
+
+ไปที่ Google Cloud Console
+
+ล็อกอินด้วยบัญชี Google ของคุณ
+
+สังเกตแถบด้านบนสุด (ใกล้โลโก้ Google Cloud) คลิกที่เมนู Dropdown เลือก "New Project" (สร้างโปรเจกต์ใหม่)
+
+ตั้งชื่อโปรเจกต์ เช่น AI-Calendar-Agent (หรือชื่ออะไรก็ได้)
+
+กด Create (สร้าง) และรอสักครู่
+
+📌 สิ่งที่ได้: Project ID (สามารถดูได้ในหน้า Dashboard ของโปรเจกต์)
+
+Step 2: เปิดใช้งาน Google Calendar API (Enable API)
+
+ในหน้าโปรเจกต์ของคุณ ไปที่เมนูด้านซ้าย เลือก APIs & Services > Library (คลัง)
+
+ในช่องค้นหา พิมพ์คำว่า Google Calendar API
+
+คลิกที่ผลลัพธ์แรก แล้วกดปุ่ม Enable (เปิดใช้งาน)
+
+Step 3: ตั้งค่าหน้าจอขออนุญาต (OAuth Consent Screen)
+
+ก่อนจะสร้างกุญแจได้ Google บังคับให้เราสร้างหน้าจอขอสิทธิ์ก่อน
+
+ไปที่เมนูด้านซ้าย เลือก APIs & Services > OAuth consent screen
+
+เลือก User Type เป็น External (ภายนอก) (เพราะบัญชีเราเป็น @gmail.com ทั่วไป) แล้วกด Create
+
+กรอกข้อมูลที่จำเป็น (บังคับแค่ 3 ช่อง):
+
+App name: My Calendar Agent
+
+User support email: เลือกอีเมลของคุณ
+
+Developer contact information: ใส่อีเมลของคุณ
+
+กด Save and Continue ข้ามขั้นตอน Scopes และ Test users ไปจนถึงหน้า Summary ได้เลย (กด Save and Continue ไปเรื่อยๆ)
+
+Step 4: สร้าง Credentials (รับไฟล์ credentials.json)
+
+ไปที่เมนูด้านซ้าย เลือก APIs & Services > Credentials (ข้อมูลเข้าสู่ระบบ)
+
+คลิก + CREATE CREDENTIALS (สร้างข้อมูลเข้าสู่ระบบ) ด้านบน เลือก OAuth client ID
+
+ช่อง Application type เลือก Desktop app (เนื่องจาก Agent เราจะรันบนเครื่องของเราเอง/Terminal)
+
+ตั้งชื่อ เช่น MCP Python Client แล้วกด Create
+
+จะมีหน้าต่าง Pop-up แสดง Client ID และ Client Secret ปรากฏขึ้น (สามารถเก็บไว้ได้)
+
+📌 ขั้นตอนสำคัญ: คลิกที่ปุ่ม DOWNLOAD JSON (ดาวน์โหลด JSON)
+
+เปลี่ยนชื่อไฟล์ที่ได้มาเป็น credentials.json และนำไปวางไว้ใน Folder ของโปรเจกต์คุณ
+
+🔒 Security Best Practice (หลัก Software Engineering)
+
+.gitignore: ทันทีที่คุณเอาไฟล์ credentials.json ใส่ในโฟลเดอร์โปรเจกต์ ห้ามลืม เพิ่มชื่อไฟล์ credentials.json (และไฟล์ token.json ที่จะเกิดขึ้นภายหลัง) ลงในไฟล์ .gitignore เด็ดขาด! เพื่อป้องกันไม่ให้กุญแจหลุดขึ้น Public GitHub
