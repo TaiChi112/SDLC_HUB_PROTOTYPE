@@ -37,10 +37,19 @@ Examples:
 
 ## 📖 Session Notes Archive
 
+### Q2 2026 (April - June)
+
+| Date | Topic | Type | File |
+|------|-------|------|------|
+| 2026-04-23 | SDLC Living Documentation + Data Ownership Decision & MVP Release Gates | Agent | [2026-04-23-sdlc-living-documentation-decisions.md](2026-04-23-sdlc-living-documentation-decisions.md) |
+
 ### Q1 2026 (January - March)
 
 | Date | Topic | Type | File |
 |------|-------|------|------|
+| 2026-03-06 | Calendar AI Agent: Gemini Fallback, Event Types, Health Checks | Implementation | [2026-03-06-calendar-features.md](2026-03-06-calendar-features.md) |
+| 2026-03-04 | Visualization Storage Strategy (ProjectSpec vs Separate Table) | Plan | [2026-03-04-visualization-storage-strategy.md](2026-03-04-visualization-storage-strategy.md) |
+| 2026-03-04 | E2E Test Complete: Spec Generation → Excalidraw Visualization | Agent | [2026-03-04-e2e-test-completion.md](2026-03-04-e2e-test-completion.md) |
 | 2026-03-03 | Component Testing & Coverage Completion | Agent | [2026-03-03-component-testing-coverage-completion.md](2026-03-03-component-testing-coverage-completion.md) |
 | 2026-03-03 | E2E WebServer Fix + Backend Folder Restructure | Agent | [2026-03-03-e2e-webserver-backend-restructure.md](2026-03-03-e2e-webserver-backend-restructure.md) |
 | 2026-03-03 | Testing Infrastructure Implementation (pytest/Vitest/Playwright) | Agent | [2026-03-03-testing-infrastructure-completion.md](2026-03-03-testing-infrastructure-completion.md) |
@@ -83,4 +92,4 @@ Use [_TEMPLATE.md](./_TEMPLATE.md) as the base template.
 
 ---
 
-**Last Updated**: March 3, 2026
+**Last Updated**: April 23, 2026
